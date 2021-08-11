@@ -6,7 +6,7 @@ import { addUser } from "./UserSlice";
 function AddUser() {
   const dispatch = useDispatch();
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const [data, setData] = useState({
     firstName: "",
     userName: "",
@@ -21,11 +21,12 @@ function AddUser() {
   };
 
   const openModal = () => {
-      setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClick = () => {
-      dispatch(addUser({
+    dispatch(
+      addUser({
         id: Math.floor(Math.random() * 1000000000),
         createdDate: data.createdDate,
         status: data.status,
@@ -33,17 +34,31 @@ function AddUser() {
         lastName: data.lastName,
         userName: data.userName,
         registrationNumber: data.registrationNumber,
-      }))
-      setOpen(false)
-  }
+      })
+    );
+    setData({
+      firstName: "",
+      userName: "",
+      registrationNumber: "",
+      lastName: "",
+      createdDate: "",
+      status: "",
+    })
+
+    setOpen(false)
+  };
 
   return (
     <div>
       <Modal
-      open={open}
+        open={open}
         as={Form}
         trigger={
-          <Button floated="right" style={{ backgroundColor: "#FDB64D" }} onClick={openModal}>
+          <Button
+            floated="right"
+            style={{ backgroundColor: "#FDB64D" }}
+            onClick={openModal}
+          >
             Ajouter utilisateur
           </Button>
         }
@@ -108,7 +123,11 @@ function AddUser() {
           </Form.Group>
         </Modal.Content>
         <Modal.Actions>
-          <Button type="submit" style={{ backgroundColor: "#FDB64D" }} onClick={handleClick}>
+          <Button
+            type="submit"
+            style={{ backgroundColor: "#FDB64D" }}
+            onClick={handleClick}
+          >
             Enregistrer
           </Button>
         </Modal.Actions>
