@@ -51,6 +51,7 @@ function AddUser() {
   return (
     <div>
       <Modal
+      onClose={() => setOpen(false)}
         open={open}
         as={Form}
         trigger={
