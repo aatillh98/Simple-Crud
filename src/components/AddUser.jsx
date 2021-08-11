@@ -48,6 +48,8 @@ function AddUser() {
     setOpen(false)
   };
 
+  const {firstName, userName, registrationNumber, lastName, createdDate, status} = data;
+  
   return (
     <div>
       <Modal
@@ -72,21 +74,21 @@ function AddUser() {
               label="first Name"
               placeholder="first Name"
               onChange={handleChange}
-              value={data.firstName}
+              value={firstName}
               name="firstName"
             />
             <Form.Input
               label="Nom d'utilisateur"
               placeholder="Nom d'utilisateur"
               onChange={handleChange}
-              value={data.userName}
+              value={userName}
               name="userName"
             />
             <Form.Input
               label="Matricule"
               placeholder="Matricule"
               onChange={handleChange}
-              value={data.registrationNumber}
+              value={registrationNumber}
               name="registrationNumber"
             />
           </Form.Group>
@@ -95,7 +97,7 @@ function AddUser() {
               label="Prénom"
               placeholder="Prénom"
               onChange={handleChange}
-              value={data.lastName}
+              value={lastName}
               name="lastName"
             />
             <Form.Input
@@ -103,7 +105,7 @@ function AddUser() {
               label="Date de création"
               placeholder="Date de création"
               onChange={handleChange}
-              value={data.createdDate}
+              value={createdDate}
               name="createdDate"
             />
             <Form.Field style={{ marginTop: 22 }}>
@@ -111,7 +113,7 @@ function AddUser() {
                 name="status"
                 id="status"
                 onChange={handleChange}
-                value={data.status}
+                value={status}
               >
                 <option value="" defaultValue>
                   Choisissez l'etat
@@ -128,6 +130,7 @@ function AddUser() {
             type="submit"
             style={{ backgroundColor: "#FDB64D" }}
             onClick={handleClick}
+            disabled={!status}
           >
             Enregistrer
           </Button>
